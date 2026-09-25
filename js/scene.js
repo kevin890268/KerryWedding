@@ -65,7 +65,7 @@ function placeAt(p, len) {
   const dx = nx.x - pt.x, dy = nx.y - pt.y;
   const mag = Math.hypot(dx, dy) || 1;
   const bank = (dx / mag) * 9 * (1 - easeInOut(p));
-  const blur = Math.max(0, 3.2 * (1 - p / .8));
+  const blur = Math.max(0, 2 * (1 - p / .6));      // brief and light: blur is costly on phones
   el.fly.style.transform = `translate3d(${pt.x}px,${pt.y}px,0) rotate(${bank.toFixed(2)}deg) scale(${scale.toFixed(4)})`;
   el.fly.style.opacity   = Math.min(1, p / .16).toFixed(3);
   el.fly.style.filter    = blur > .05 ? `blur(${blur.toFixed(2)}px)` : 'none';
@@ -291,9 +291,10 @@ async function fillScreen() {
   document.body.appendChild(el.card);
   el.scene.classList.add('is-gone');
 
+  const fullH = (window.CSS && CSS.supports && CSS.supports('height', '100svh')) ? '100svh' : `${innerHeight}px`;
   await el.card.animate(
     [{ left: `${from.left}px`, top: `${from.top}px`, width: `${from.width}px`, height: `${from.height}px` },
-     { left: `${left}px`, top: '0px', width: `${colW}px`, height: '100svh' }],
+     { left: `${left}px`, top: '0px', width: `${colW}px`, height: fullH }],
     { duration: reduced ? 1 : 950, easing: GLIDE, fill: 'forwards' }
   ).finished;
 
@@ -309,7 +310,7 @@ function handOff() {
 
   el.card.getAnimations().forEach(a => a.cancel());
   el.card.classList.remove('is-full');
-  el.card.removeAttribute('style');
+  ['transform', 'left', 'top', 'width', 'height'].forEach(p => el.card.style.removeProperty(p));
   el.slot.appendChild(el.card);
 
   window.Invite?.start();
@@ -340,8 +341,24 @@ function dust() {
   seed();
   addEventListener('resize', seed);
 
+  // two pre-drawn sprites instead of a fresh gradient per spark per frame
+  const sprite = (core) => {
+    const s = document.createElement('canvas'); s.width = s.height = 64;
+    const g = s.getContext('2d');
+    const halo = g.createRadialGradient(32, 32, 0, 32, 32, 32);
+    halo.addColorStop(0,   'rgba(214,158,60,.55)');
+    halo.addColorStop(.45, 'rgba(203,148,66,.2)');
+    halo.addColorStop(1,   'rgba(203,148,66,0)');
+    g.fillStyle = halo; g.fillRect(0, 0, 64, 64);
+    g.fillStyle = core; g.beginPath(); g.arc(32, 32, 32 / 6, 0, Math.PI * 2); g.fill();
+    return s;
+  };
+  const warmSprite = sprite('rgba(190,132,44,.85)');
+  const hotSprite  = sprite('rgba(255,250,236,1)');
+  const cap = innerWidth < 600 ? 200 : 420;        // phones get a lighter trail
+
   emitTrail = (x, y, scale, strength) => {
-    const n = strength > .5 ? 3 : 2;
+    const n = strength > .5 && innerWidth >= 600 ? 3 : 2;
     for (let i = 0; i < n; i++) {
       const spread = 7 * scale + 2;
       sparks.push({
@@ -351,7 +368,7 @@ function dust() {
         life: 1, decay: .010 + Math.random() * .014, hot: Math.random() < .3
       });
     }
-    if (sparks.length > 420) sparks.splice(0, sparks.length - 420);
+    if (sparks.length > cap) sparks.splice(0, sparks.length - cap);
   };
 
   let prev = 0;
@@ -371,15 +388,11 @@ function dust() {
       const s = sparks[i];
       s.x += s.vx * dt; s.y += s.vy * dt; s.vy += .006 * dt; s.life -= s.decay * dt;
       if (s.life <= 0) { sparks.splice(i, 1); continue; }
-      const a = s.life * s.life, halo = s.r * 4.5;
-      const g = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, halo);
-      g.addColorStop(0,   `rgba(214,158,60,${(a * .55).toFixed(3)})`);
-      g.addColorStop(.45, `rgba(203,148,66,${(a * .2).toFixed(3)})`);
-      g.addColorStop(1,   'rgba(203,148,66,0)');
-      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(s.x, s.y, halo, 0, Math.PI * 2); ctx.fill();
-      ctx.fillStyle = s.hot ? `rgba(255,250,236,${a.toFixed(3)})` : `rgba(190,132,44,${(a * .85).toFixed(3)})`;
-      ctx.beginPath(); ctx.arc(s.x, s.y, s.r * .75, 0, Math.PI * 2); ctx.fill();
+      const halo = s.r * 4.5;
+      ctx.globalAlpha = s.life * s.life;
+      ctx.drawImage(s.hot ? hotSprite : warmSprite, s.x - halo, s.y - halo, halo * 2, halo * 2);
     }
+    ctx.globalAlpha = 1;
     requestAnimationFrame(draw);
   };
   requestAnimationFrame(draw);
@@ -391,10 +404,48 @@ function dust() {
 /* ------------------------------------------------------------------
    run
    ------------------------------------------------------------------ */
+/* Everything the envelope is made of has to be decoded before it moves,
+   or a slow phone would fly in an empty frame. Never wait longer than 6s. */
+function ready() {
+  const urls = ['assets/env-flap.webp', 'assets/env-pocket.webp', 'assets/env-inside.webp',
+                'assets/wax-seal.webp', 'assets/opener.webp', 'assets/photos/sunn0445.jpg'];
+  const one = u => new Promise(res => {
+    const i = new Image();
+    i.onload = () => (i.decode ? i.decode().catch(() => {}) : Promise.resolve()).then(res);
+    i.onerror = res;
+    i.src = u;
+  });
+  return Promise.race([Promise.all(urls.map(one)), wait(6000)]);
+}
+
+/* The invitation is display:none until the card lands, so its fonts would only
+   start downloading then — and swap in mid-glide, shifting the page. Ask for
+   exactly the glyphs it uses, now, while the envelope is still on screen. */
+function warmFonts() {
+  if (!document.fonts || !document.fonts.load) return;
+  const text = (el.invite.textContent || '').replace(/\s+/g, '') + '0123456789';
+  ['400 16px "Noto Serif TC"', '500 16px "Noto Serif TC"', '700 16px "Noto Serif TC"',
+   '400 16px Cinzel', '700 16px Cinzel', '400 16px "Bodoni Moda"', '400 16px Italiana',
+   '400 16px Allison', '400 16px "Gilda Display"', '400 16px "Crimson Pro"',
+   '300 16px Jost', '400 16px Jost', '500 16px Jost']
+    .forEach(f => document.fonts.load(f, text).catch(() => {}));
+}
+
+/* container query units, with a fallback for phones too old to have them */
+function cqFallback() {
+  if (window.CSS && CSS.supports && CSS.supports('width', '1cqw')) return;
+  if (!('ResizeObserver' in window)) return;
+  new ResizeObserver(([e]) => {
+    el.card.style.setProperty('--cq', `${e.contentRect.width / 100}px`);
+  }).observe(el.card);
+}
+
 async function run() {
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   scrollTo(0, 0);
   setPry(0);
+  cqFallback();
+  warmFonts();
 
   if (skip) {
     el.scene.classList.add('is-gone');
@@ -403,13 +454,15 @@ async function run() {
   }
   dust();
 
+  await ready();
+
   if (reduced) {
     buildFlightPath();
     el.fly.style.opacity = '1';
     await arrive();
     return;
   }
-  await wait(fast ? 0 : 700);
+  await wait(fast ? 0 : 500);
   await flight(fast ? 300 : 3000);
   await arrive();
 }

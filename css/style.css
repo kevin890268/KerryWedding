@@ -32,19 +32,21 @@ html{-webkit-text-size-adjust:100%}
 
 body{
   margin:0;
+  min-height:100vh;
   min-height:100svh;
   background:radial-gradient(120% 90% at 50% 8%, #fdfaf3 0%, var(--ivory) 52%, var(--ivory-2) 100%);
   color:var(--ink);
   font-family:"Noto Serif TC","Songti TC","PMingLiU",serif;
   overflow-x:hidden;
 }
-body.is-locked{overflow:hidden;height:100svh;touch-action:none}
+body.is-locked{overflow:hidden;height:100vh;height:100svh;touch-action:none;overscroll-behavior:none}
 
 img{max-width:100%;display:block}
 
+/* paper grain on the backdrop only — beneath the envelope, no blend mode (cheap on phones) */
 .grain{
-  position:fixed; inset:-10%; pointer-events:none; z-index:60;
-  opacity:.45; mix-blend-mode:multiply;
+  position:fixed; inset:0; pointer-events:none; z-index:1;
+  opacity:.28;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
 }
 body:not(.is-locked) .grain{display:none}
@@ -57,6 +59,8 @@ body:not(.is-locked) .grain{display:none}
   position:fixed; inset:0; z-index:30;
   perspective:1400px; perspective-origin:50% 42%;
   touch-action:none;
+  -webkit-user-select:none; user-select:none;
+  -webkit-touch-callout:none;              /* no "save image" menu on a long press */
 }
 #scene.is-gone{display:none}
 #flightSvg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;visibility:hidden}
@@ -90,24 +94,21 @@ body:not(.is-locked) .grain{display:none}
   position:absolute; inset:0;
   background:no-repeat center/100% 100%;
 }
-.env-inside{background-image:url("../assets/env-inside.png");z-index:1}
+.env-inside{background-image:url("../assets/env-inside.webp");z-index:1}
 .env-paper{position:absolute;inset:0;z-index:5;transform-style:preserve-3d}
 .env-pocket{
-  background-image:url("../assets/env-pocket.png"); z-index:4;
+  background-image:url("../assets/env-pocket.webp"); z-index:4;
   filter:drop-shadow(0 .7rem 1.1rem rgba(70,20,20,.26));
 }
 .env-flap{
-  background-image:url("../assets/env-flap.png");
+  background-image:url("../assets/env-flap.webp");
   transform-origin:50% 0%;
   transform:rotateX(0deg);
   z-index:6;
   filter:drop-shadow(0 .4rem .6rem rgba(50,0,8,.35));
-  transition:transform 1s var(--ease-glide), filter .5s var(--ease-soft);
+  transition:transform 1s var(--ease-glide);      /* only the transform moves: no per-frame shadow repaint */
 }
-.is-open .env-flap{
-  transform:rotateX(-166deg);
-  filter:drop-shadow(0 -.4rem .8rem rgba(50,0,8,.25)) brightness(.92);
-}
+.is-open .env-flap{transform:rotateX(-166deg)}
 
 /* --- the bear wax seal, dead centre ----------------------------- */
 .seal{
@@ -115,7 +116,7 @@ body:not(.is-locked) .grain{display:none}
   position:absolute; left:50%; top:50%;
   width:25%; aspect-ratio:440/393;
   z-index:8; pointer-events:none;
-  background:no-repeat center/contain url("../assets/wax-seal.png");
+  background:no-repeat center/contain url("../assets/wax-seal.webp");
   transform:
     translate(-50%,-50%)
     translate(calc(var(--lift) * -3px), calc(var(--lift) * -8px))
@@ -160,7 +161,7 @@ body:not(.is-locked) .grain{display:none}
 .opener-art{
   position:absolute; left:0; top:0; display:block; margin:0; padding:0; border:0;
   width:calc(var(--env-w) * .5); aspect-ratio:760/487;
-  background:no-repeat center/100% 100% url("../assets/opener.png");
+  background:no-repeat center/100% 100% url("../assets/opener.webp");
   transform-origin:0% 100%;
   transform:translate(0,-100%) rotate(88deg);
   cursor:grab; touch-action:none;
@@ -172,8 +173,9 @@ body:not(.is-locked) .grain{display:none}
 
 /* --- hint -------------------------------------------------------- */
 .hint{
-  position:absolute; left:-10vw; right:-10vw;
+  position:absolute; left:0; right:0;
   top:calc(100% + var(--env-w) * .4);
+  white-space:nowrap;
   margin:0; text-align:center;
   font-family:"Noto Serif TC",serif; font-weight:400;
   font-size:.78rem; letter-spacing:.32em;
@@ -218,29 +220,29 @@ body:not(.is-locked) .grain{display:none}
   -webkit-background-clip:text; background-clip:text; color:transparent;
 }
 .cover-kicker{
-  margin:0; font-weight:500; font-size:4.4cqw; letter-spacing:.3em; text-indent:.3em;
+  margin:0; font-weight:500; font-size:calc(var(--cq,1cqw)*4.4); letter-spacing:.3em; text-indent:.3em;
 }
-.cover-xi{margin:.8cqw 0 0;font-weight:900;font-size:14cqw;line-height:1.08}
+.cover-xi{margin:calc(var(--cq,1cqw)*.8) 0 0;font-weight:900;font-size:calc(var(--cq,1cqw)*14);line-height:1.08}
 .cover-title{
-  margin:.6cqw 0 0; font-family:"Cinzel",serif; font-weight:400;
-  font-size:9.2cqw; line-height:1.05; letter-spacing:.015em;
+  margin:calc(var(--cq,1cqw)*.6) 0 0; font-family:"Cinzel",serif; font-weight:400;
+  font-size:calc(var(--cq,1cqw)*9.2); line-height:1.05; letter-spacing:.015em;
 }
 .cover-sub{
-  margin:1.8cqw 0 0; font-family:"Jost",system-ui,sans-serif; font-weight:400;
-  font-size:2.05cqw; line-height:1.6; letter-spacing:.02em;
+  margin:calc(var(--cq,1cqw)*1.8) 0 0; font-family:"Jost",system-ui,sans-serif; font-weight:400;
+  font-size:calc(var(--cq,1cqw)*2.05); line-height:1.6; letter-spacing:.02em;
   color:rgba(255,238,214,.86);
 }
 .cover-names{
   position:absolute; left:0; right:0; top:62%; margin:0;
-  display:flex; justify-content:center; align-items:center; gap:4.4cqw;
-  font-size:4.5cqw; letter-spacing:.16em; color:#fff5e8;
-  text-shadow:0 .3cqw 1.2cqw rgba(0,0,0,.45);
+  display:flex; justify-content:center; align-items:center; gap:calc(var(--cq,1cqw)*4.4);
+  font-size:calc(var(--cq,1cqw)*4.5); letter-spacing:.16em; color:#fff5e8;
+  text-shadow:0 calc(var(--cq,1cqw)*.3) calc(var(--cq,1cqw)*1.2) rgba(0,0,0,.45);
 }
 .cover-medal{
   display:grid; place-items:center;
-  width:8.4cqw; height:8.4cqw; border-radius:50%;
-  border:.4cqw solid #d8b067; background:rgba(90,0,14,.35);
-  font-size:4.6cqw; font-weight:700; letter-spacing:0; color:#e9c47c; text-shadow:none;
+  width:calc(var(--cq,1cqw)*8.4); height:calc(var(--cq,1cqw)*8.4); border-radius:50%;
+  border:calc(var(--cq,1cqw)*.4) solid #d8b067; background:rgba(90,0,14,.35);
+  font-size:calc(var(--cq,1cqw)*4.6); font-weight:700; letter-spacing:0; color:#e9c47c; text-shadow:none;
 }
 
 /* ============================================================

@@ -9,6 +9,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Allison&family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Cinzel:wght@400;700&family=Crimson+Pro:wght@400&family=Gilda+Display&family=Italiana&family=Jost:wght@300;400;500&family=Noto+Serif+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<!-- the envelope and the cover are needed before anything moves -->
+<link rel="preload" as="image" href="assets/env-flap.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/env-pocket.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/env-inside.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/wax-seal.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/opener.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/photos/sunn0445.jpg">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/invite.css">
 </head>
@@ -33,7 +40,7 @@
 
         <!-- the invitation's cover, lying on its side inside the envelope -->
         <article class="card cover" id="card" aria-label="我們結婚啦">
-          <img class="cover-photo" src="assets/photos/sunn0445.jpg" alt="黃泰傑與高凱俐">
+          <img decoding="async" fetchpriority="high" class="cover-photo" src="assets/photos/sunn0445.jpg" alt="黃泰傑與高凱俐">
           <div class="cover-shade" aria-hidden="true"></div>
           <canvas class="cover-confetti" id="confetti" aria-hidden="true"></canvas>
           <div class="cover-top">
@@ -80,14 +87,14 @@
   <!-- 2 · we're getting married -->
   <section class="blk getting">
     <p class="t-serif wine" data-rise>We're getting married</p>
-    <img class="getting-photo" src="assets/photos/sunn0448.jpg" alt="" loading="lazy" data-rise>
+    <img decoding="async" class="getting-photo" src="assets/photos/sunn0448.jpg" alt="" loading="lazy" data-rise>
     <p class="t-date" data-rise><span>【</span>2026/11/08<span>】</span></p>
     <p class="t-zh" data-rise>我們即將步入人生的新階段<br>誠摯邀請您一起來見證和分享我們的喜悅</p>
-    <p class="t-serif wine" data-rise>Love has no definition，you are in it.</p>
+    <p class="t-serif wine" data-rise>Love has no definition, you are in it.</p>
   </section>
 
   <!-- 3 -->
-  <figure class="ph"><img src="assets/photos/sunn0485.jpg" width="933" height="1400" alt="" loading="lazy"></figure>
+  <figure class="ph" style="--r:590/686"><img decoding="async" src="assets/photos/sunn0485.jpg" width="933" height="1400" alt="" loading="lazy"></figure>
 
   <!-- 4 · poem -->
   <section class="blk poem">
@@ -97,7 +104,7 @@
   </section>
 
   <!-- 5 -->
-  <figure class="ph"><img src="assets/photos/sunn0414.jpg" width="933" height="1400" alt="" loading="lazy"></figure>
+  <figure class="ph" style="--r:590/448;--pos:50% 14%"><img decoding="async" src="assets/photos/sunn0414.jpg" width="933" height="1400" alt="" loading="lazy"></figure>
 
   <!-- 6 · groom & bride, and the banquet -->
   <section class="blk couple">
@@ -126,13 +133,13 @@
   </section>
 
   <!-- 7 -->
-  <figure class="ph"><img src="assets/photos/sunn0502-1.jpg" width="933" height="1400" alt="" loading="lazy"></figure>
+  <figure class="ph" style="--r:590/556"><img decoding="async" src="assets/photos/sunn0502-1.jpg" width="933" height="1400" alt="" loading="lazy"></figure>
 
   <!-- 8 · love you forever -->
   <section class="blk forever">
     <p class="t-serif wine" data-rise>Because of you, my life is filled with happiness.</p>
     <div class="forever-row">
-      <img class="arch arch--left" src="assets/photos/sunn0615.jpg" alt="" loading="lazy" data-rise>
+      <img decoding="async" class="arch arch--left" src="assets/photos/sunn0615.jpg" alt="" loading="lazy" data-rise>
       <div class="forever-side" data-rise>
         <p class="t-thin wine">Love<br>you<br>Forever</p>
         <span class="vline" aria-hidden="true"></span>
@@ -142,11 +149,11 @@
   </section>
 
   <!-- 9 -->
-  <figure class="ph"><img src="assets/photos/sunn0500.jpg" width="1400" height="933" alt="" loading="lazy"></figure>
+  <figure class="ph" style="--r:590/406;--pos:60% 50%"><img decoding="async" src="assets/photos/sunn0500.jpg" width="1400" height="933" alt="" loading="lazy"></figure>
 
   <!-- 10 · like sunlight -->
   <section class="sunlight">
-    <figure class="ph ph--fade"><img src="assets/photos/sunn0647.jpg" width="1400" height="933" alt="" loading="lazy"></figure>
+    <figure class="ph ph--fade" style="--r:590/556"><img decoding="async" src="assets/photos/sunn0647.jpg" width="1400" height="933" alt="" loading="lazy"></figure>
     <div class="blk blk--tight">
       <p class="t-quote" data-rise>Let my love, like sunlight,<br>surround you and yet give you illumined freedom.</p>
       <p class="t-zh t-zh--sun" data-rise>我們穿過萬里之遙遇到彼此<br>世界在繁華喧囂的光暈里倒退<br>你於我而言，是這場盛大浪漫里的唯一心動</p>
@@ -155,13 +162,13 @@
 
   <!-- 11 · love 11/08 you -->
   <section class="blk loveyou">
-    <img class="arch arch--center" src="assets/photos/sunn0655.jpg" alt="" loading="lazy" data-rise>
+    <img decoding="async" class="arch arch--center" src="assets/photos/sunn0655.jpg" alt="" loading="lazy" data-rise>
     <p class="loveyou-row" data-rise><span>LOVE</span><span>11/08</span><span>YOU</span></p>
     <p class="t-quote wine" data-rise>Looking back at all the excitement in the past years,<br>you still won the top spot.</p>
   </section>
 
   <!-- 12 · the fan, running into the calendar -->
-  <figure class="ph ph--flush"><img src="assets/photos/sunn0475.jpg" width="933" height="1400" alt="" loading="lazy"></figure>
+  <figure class="ph ph--flush" style="--r:590/840;--pos:50% 48%"><img decoding="async" src="assets/photos/sunn0475.jpg" width="933" height="1400" alt="" loading="lazy"></figure>
 
   <!-- 13 · calendar -->
   <section class="cal">
@@ -205,7 +212,7 @@
       <p class="num"><span>②</span>與「上海鄉村 承德本家」同棟停車場（每小時120 元）</p>
     </div>
     <a class="map" id="mapLink" href="#" target="_blank" rel="noopener" data-rise>
-      <img src="assets/map.png" width="376" height="374" alt="上海鄉村 承德本家 位置圖：台北車站北側，承德路一段 2 號" loading="lazy">
+      <img decoding="async" src="assets/map.webp" width="376" height="374" alt="上海鄉村 承德本家 位置圖：台北車站北側，承德路一段 2 號" loading="lazy">
     </a>
   </section>
 
@@ -217,7 +224,7 @@
   <div class="gallery" id="gallery"></div>
 
   <!-- 16 -->
-  <figure class="ph"><img src="assets/photos/sunn0422-1.jpg" width="933" height="1400" alt="" loading="lazy"></figure>
+  <figure class="ph" style="--r:590/556"><img decoding="async" src="assets/photos/sunn0422-1.jpg" width="933" height="1400" alt="" loading="lazy"></figure>
 
   <!-- 17 · thank you -->
   <section class="blk thanks">

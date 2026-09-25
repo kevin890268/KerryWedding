@@ -31,13 +31,19 @@
 .card-slot{width:100%}
 .card-slot .card{
   position:relative; left:auto; top:auto; z-index:auto;
-  width:100%; height:100svh; aspect-ratio:auto;
+  width:100%; height:100vh; height:100svh; aspect-ratio:auto;
   transform:none; border-radius:0; box-shadow:none;
 }
 
 /* --- full-width photographs ------------------------------------- */
 .ph{margin:0;line-height:0}
-.ph img{width:100%;height:auto}
+/* Each photo sits in the same box it has in the reference recording, centre-cropped
+   (measured frame by frame: --r is the box's width/height in the recording's pixels). */
+.ph img{
+  width:100%; height:auto;
+  aspect-ratio:var(--r, auto);
+  object-fit:cover; object-position:var(--pos, 50% 50%);
+}
 .ph--fade img{
   -webkit-mask-image:linear-gradient(180deg,#000 58%,transparent 100%);
           mask-image:linear-gradient(180deg,#000 58%,transparent 100%);
@@ -76,7 +82,7 @@
 
 /* 2 · we're getting married */
 .getting{padding:2.6rem 1.2rem 2.8rem}
-.getting-photo{width:65%;margin:1.9rem auto 1.4rem;aspect-ratio:3/2;object-fit:cover}
+.getting-photo{width:63.6%;margin:1.9rem auto 1.4rem;aspect-ratio:375/275;object-fit:cover}
 .t-date{
   font-family:"Jost",system-ui,sans-serif; font-size:15px; letter-spacing:.12em; color:#333;
   display:flex; justify-content:center; gap:1.2rem; margin-bottom:1.7rem !important;
@@ -114,7 +120,7 @@ a.u:hover{color:var(--wine)}
 .forever .t-serif{text-align:center;padding:0 1rem;margin-bottom:2.2rem}
 .forever-row{display:flex;align-items:flex-start}
 .arch{display:block;object-fit:cover;border-radius:999px 999px 0 0}
-.arch--left{width:65%;aspect-ratio:.68}
+.arch--left{width:65%;aspect-ratio:383/567}
 .forever-side{flex:1;display:flex;flex-direction:column;align-items:flex-end;padding:1.9rem 1.5rem 0 0}
 .forever-side .t-thin{text-align:right}
 .vline{display:block;width:1px;height:8.5rem;background:#333;margin:3.2rem 1.2rem 0 0}
@@ -127,7 +133,7 @@ a.u:hover{color:var(--wine)}
 /* 11 · love 11/08 you */
 .loveyou{padding:4.4rem 0 3.2rem}
 .arch--center{
-  width:76%; margin:0 auto; aspect-ratio:.76;
+  width:75%; margin:0 auto; aspect-ratio:441/590;
   -webkit-mask-image:linear-gradient(180deg,#000 80%,transparent 100%);
           mask-image:linear-gradient(180deg,#000 80%,transparent 100%);
 }
@@ -171,7 +177,7 @@ a.u:hover{color:var(--wine)}
 }
 .cal-grid .year{
   position:absolute; left:50%; top:52%; transform:translate(-50%,-50%);
-  font-family:"Jost",system-ui,sans-serif; font-weight:600; font-size:88px; letter-spacing:.02em;
+  font-family:"Jost",system-ui,sans-serif; font-weight:500; font-size:88px; letter-spacing:.02em;
   color:rgba(255,255,255,.07); pointer-events:none; z-index:0;
 }
 

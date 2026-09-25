@@ -102,7 +102,7 @@ function goldLayer(canvas, { density, fall, flakes }) {
     w = r.width; h = r.height;
     canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    const want = Math.min(90, Math.round(w * h * density));
+    const want = Math.min(innerWidth < 600 ? 55 : 90, Math.round(w * h * density));
     while (bits.length < want) bits.push(make(true));
     bits.length = want;
   };
@@ -316,7 +316,12 @@ window.Invite = {
       return;
     }
     observeRises();
-    setTimeout(startGlide, 1400);                   // a breath on the cover first
+    // a breath on the cover first — and never glide before the fonts are in,
+    // or text below would re-flow and nudge the page while it moves
+    const fontsIn = document.fonts && document.fonts.ready
+      ? Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 2500))])
+      : Promise.resolve();
+    Promise.all([fontsIn, new Promise(r => setTimeout(r, 1400))]).then(startGlide);
   }
 };
 

@@ -31,6 +31,7 @@ window.WEDDING = {
   ],
   galleryWide: ["sunn0517.jpg", "sunn0563-1.jpg", "sunn0601-1.jpg", "sunn0628-1.jpg"],
 
-  // auto-scroll speed once the invitation fills the screen (pixels per second)
-  scrollSpeed: 52
+  // auto-scroll speed once the invitation fills the screen, in CSS pixels per second.
+  // 41 is what the reference recording does (62 px/s of 590-px video on a 393-pt phone).
+  scrollSpeed: 41
 };

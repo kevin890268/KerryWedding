@@ -1,5 +1,7 @@
 # KerryWedding
 
+完整的專案說明、流程時間、進度與待辦：見 [PROJECT.md](PROJECT.md)。
+
 黃泰傑 ❤ 高凱俐 的訂婚邀請 — 2026.11.08
 
 A deep red envelope glides in from the right, trailing sparks, and settles in the
