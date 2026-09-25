@@ -207,43 +207,70 @@ body:not(.is-locked) .grain{display:none}
 .is-presenting .card{z-index:12}
 .card.is-full{position:fixed;z-index:40;border-radius:0;box-shadow:none}
 
-.cover-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 36%}
+/* The cover is laid out exactly as in the reference recording. Every size and
+   position is measured there and expressed in --u = 1% of the card's width, so the
+   composition is the same whether the card is in the envelope or fills a phone. */
+.card{--u:var(--cq,1cqw)}
+
+/* the photo: 130% of the width, centred, pinned to the top (a 1 : 1.96 frame) */
+.cover-photo{
+  position:absolute; left:0; top:0; width:100%;
+  height:max(calc(var(--u) * 196), 100%);
+  object-fit:cover; object-position:50% 0;
+}
 .cover-shade{
   position:absolute; inset:0; pointer-events:none;
-  background:linear-gradient(180deg, rgba(70,0,12,.62) 0%, rgba(70,0,12,.18) 30%, rgba(0,0,0,0) 48%, rgba(20,0,4,.22) 100%);
+  background:linear-gradient(180deg, rgba(60,0,10,.25) 0%, rgba(60,0,10,0) 34%);
 }
 .cover-confetti{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 
-.cover-top{position:absolute;left:0;right:0;top:3.6%;text-align:center;pointer-events:none}
-.gold,.cover-kicker,.cover-xi,.cover-title{
-  background:linear-gradient(180deg,#fdebb8 0%,#e8c57c 50%,#bf9142 100%);
+.cover-kicker,.cover-xi,.cover-title,.cover-sub,.cover-names{
+  position:absolute; left:0; right:0; margin:0; text-align:center; line-height:1;
+  pointer-events:none; white-space:nowrap;
+}
+.cover-kicker,.cover-xi,.cover-title{
+  background:linear-gradient(180deg,#f9e3a8 0%,#efcf88 55%,#dfb468 100%);
   -webkit-background-clip:text; background-clip:text; color:transparent;
 }
+/* 我們結婚啦 — sans, medium, widely spaced */
 .cover-kicker{
-  margin:0; font-weight:500; font-size:calc(var(--cq,1cqw)*4.4); letter-spacing:.3em; text-indent:.3em;
+  top:calc(var(--u) * 5.3);
+  font-family:"Noto Sans TC",sans-serif; font-weight:500;
+  font-size:calc(var(--u) * 3.05); letter-spacing:.35em; text-indent:.35em;
 }
-.cover-xi{margin:calc(var(--cq,1cqw)*.8) 0 0;font-weight:900;font-size:calc(var(--cq,1cqw)*14);line-height:1.08}
+/* 囍 — sans, bold */
+.cover-xi{
+  top:calc(var(--u) * 13.2);
+  font-family:"Noto Sans TC",sans-serif; font-weight:900;
+  font-size:calc(var(--u) * 10.5);
+}
+/* OUR WEDDING — a light, high-contrast roman with a crossed W */
 .cover-title{
-  margin:calc(var(--cq,1cqw)*.6) 0 0; font-family:"Cinzel",serif; font-weight:400;
-  font-size:calc(var(--cq,1cqw)*9.2); line-height:1.05; letter-spacing:.015em;
+  top:calc(var(--u) * 26.1);
+  font-family:"Cormorant Garamond",serif; font-weight:300;
+  font-size:calc(var(--u) * 9.3); letter-spacing:0;
 }
 .cover-sub{
-  margin:calc(var(--cq,1cqw)*1.8) 0 0; font-family:"Jost",system-ui,sans-serif; font-weight:400;
-  font-size:calc(var(--cq,1cqw)*2.05); line-height:1.6; letter-spacing:.02em;
-  color:rgba(255,238,214,.86);
+  top:calc(var(--u) * 35.5);
+  font-family:"Jost",system-ui,sans-serif; font-weight:400;
+  font-size:calc(var(--u) * 1.55); line-height:1.62; letter-spacing:.22em; text-indent:.22em;
+  color:#f3e2bb;
 }
+/* 高凱俐 ◎ 黃泰傑 — serif, white, a little right of centre as in the original */
 .cover-names{
-  position:absolute; left:0; right:0; top:62%; margin:0;
-  display:flex; justify-content:center; align-items:center; gap:calc(var(--cq,1cqw)*4.4);
-  font-size:calc(var(--cq,1cqw)*4.5); letter-spacing:.16em; color:#fff5e8;
-  text-shadow:0 calc(var(--cq,1cqw)*.3) calc(var(--cq,1cqw)*1.2) rgba(0,0,0,.45);
+  top:calc(var(--u) * 121.5);
+  display:flex; justify-content:center; align-items:center; gap:calc(var(--u) * 5.4);
+  padding-left:calc(var(--u) * 4.6);
+  font-family:"Noto Serif TC",serif; font-weight:400;
+  font-size:calc(var(--u) * 3.56); letter-spacing:.11em; color:#fff;
+  text-shadow:0 0 calc(var(--u) * 1.2) rgba(0,0,0,.35);
 }
 .cover-medal{
-  display:grid; place-items:center;
-  width:calc(var(--cq,1cqw)*8.4); height:calc(var(--cq,1cqw)*8.4); border-radius:50%;
-  border:calc(var(--cq,1cqw)*.4) solid #d8b067; background:rgba(90,0,14,.35);
-  font-size:calc(var(--cq,1cqw)*4.6); font-weight:700; letter-spacing:0; color:#e9c47c; text-shadow:none;
+  display:block; flex:none;
+  width:calc(var(--u) * 6.6); height:calc(var(--u) * 6.6);
+  margin-right:.11em;                      /* balance the name's letter-spacing */
 }
+.cover-medal svg{display:block;width:100%;height:100%;overflow:visible}
 
 /* ============================================================
    wider screens
