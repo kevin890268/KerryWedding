@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>黃泰傑 ❤ 高凱俐 的訂婚邀請</title>
+<meta name="description" content="2026.11.08 誠摯邀請您參加我們的訂婚喜宴">
+<meta name="theme-color" content="#f6f1e7">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allison&family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Cinzel:wght@400;700&family=Crimson+Pro:wght@400&family=Gilda+Display&family=Italiana&family=Jost:wght@300;400;500&family=Noto+Serif+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/invite.css">
+</head>
+<body class="is-locked">
+
+<div class="grain" aria-hidden="true"></div>
+<canvas id="dust" aria-hidden="true"></canvas>
+
+<!-- ───────────────  ACT I · THE ENVELOPE  ─────────────── -->
+<div id="scene" aria-label="一封信正送到您面前">
+
+  <svg id="flightSvg" aria-hidden="true"><path id="flightPath" fill="none" stroke="none"></path></svg>
+
+  <div id="fly">
+    <div id="settle">
+      <div class="envelope" id="envelope">
+
+        <div class="env-shadow" aria-hidden="true"></div>
+
+        <!-- the open envelope's body: seen only once the flap lifts -->
+        <div class="env-inside" id="envInside" aria-hidden="true"></div>
+
+        <!-- the invitation's cover, lying on its side inside the envelope -->
+        <article class="card cover" id="card" aria-label="我們結婚啦">
+          <img class="cover-photo" src="assets/photos/sunn0445.jpg" alt="黃泰傑與高凱俐">
+          <div class="cover-shade" aria-hidden="true"></div>
+          <canvas class="cover-confetti" id="confetti" aria-hidden="true"></canvas>
+          <div class="cover-top">
+            <p class="cover-kicker">我們結婚啦</p>
+            <p class="cover-xi" aria-hidden="true">囍</p>
+            <h1 class="cover-title">OUR WEDDING</h1>
+            <p class="cover-sub">No measure of time with you will be long enough<br>but let's start with forever</p>
+          </div>
+          <p class="cover-names">
+            <span>高凱俐</span><span class="cover-medal" aria-hidden="true">囍</span><span>黃泰傑</span>
+          </p>
+        </article>
+
+        <!-- the front of the envelope, and the flap that swings open -->
+        <div class="env-paper" id="paper">
+          <div class="env-pocket" aria-hidden="true"></div>
+          <div class="env-flap" id="flap" aria-hidden="true"></div>
+        </div>
+
+        <!-- the bear wax seal, right in the middle -->
+        <div class="seal" id="seal" aria-hidden="true"></div>
+
+        <!-- the letter opener: its handle below, its blade reaching up under the seal -->
+        <div class="opener" id="opener">
+          <div class="opener-nudge" id="openerNudge">
+            <button class="opener-art" id="openerArt" type="button"
+                    aria-label="將拆信刀往上推，取下蜂蠟，打開信封"></button>
+          </div>
+        </div>
+      </div><!-- /.envelope -->
+
+      <p class="hint" id="hint" aria-hidden="true">將拆信刀往上推，取下蜂蠟</p>
+    </div>
+  </div>
+</div>
+
+<!-- ───────────────  ACT II · THE INVITATION  ─────────────── -->
+<main id="invite" aria-hidden="true">
+<div class="inv">
+
+  <!-- 1 · cover — the card from the envelope lands here -->
+  <section class="hero"><div class="card-slot" id="cardSlot"></div></section>
+
+  <!-- 2 · we're getting married -->
+  <section class="blk getting">
+    <p class="t-serif wine" data-rise>We're getting married</p>
+    <img class="getting-photo" src="assets/photos/sunn0448.jpg" alt="" loading="lazy" data-rise>
+    <p class="t-date" data-rise><span>【</span>2026/11/08<span>】</span></p>
+    <p class="t-zh" data-rise>我們即將步入人生的新階段<br>誠摯邀請您一起來見證和分享我們的喜悅</p>
+    <p class="t-serif wine" data-rise>Love has no definition，you are in it.</p>
+  </section>
+
+  <!-- 3 -->
+  <figure class="ph"><img src="assets/photos/sunn0485.jpg" width="933" height="1400" alt="" loading="lazy"></figure>
+
+  <!-- 4 · poem -->
+  <section class="blk poem">
+    <p class="t-caps wine" data-rise>Born free, loving and fearless</p>
+    <p class="t-zh t-zh--poem" data-rise>你說最好的人會到身邊<br>當您收到這封邀請函<br>我們已經在倒數著日子<br>期待著與您們相見<br>在我們最重要的這一天</p>
+    <p class="t-display wine" data-rise>My lover</p>
+  </section>
+
+  <!-- 5 -->
+  <figure class="ph"><img src="assets/photos/sunn0414.jpg" width="933" height="1400" alt="" loading="lazy"></figure>
+
+  <!-- 6 · groom & bride, and the banquet -->
+  <section class="blk couple">
+    <div class="couple-grid" data-rise>
+      <div class="side">
+        <p class="role">GROOM</p>
+        <p class="who">黃泰傑</p>
+        <p class="kin-l">男方家長</p>
+        <p class="kin">黃銘和 林秀靜</p>
+      </div>
+      <svg class="heart" viewBox="0 0 24 22" aria-hidden="true"><path d="M12 21.2 10.4 19.8C4.6 14.6 1 11.3 1 7.2 1 3.9 3.6 1.3 6.9 1.3c1.9 0 3.7.9 5.1 2.3 1.4-1.4 3.2-2.3 5.1-2.3C20.4 1.3 23 3.9 23 7.2c0 4.1-3.6 7.4-9.4 12.6L12 21.2Z"/></svg>
+      <div class="side">
+        <p class="role">BRIDE</p>
+        <p class="who">高凱俐</p>
+        <p class="kin-l">女方家長</p>
+        <p class="kin">高啟清 官宜靜</p>
+      </div>
+    </div>
+    <p class="banquet-lead" data-rise>誠摯邀請您參加我們的訂婚喜宴</p>
+    <div class="banquet" data-rise>
+      <p><span class="u">喜宴日期&amp;時間：2026.11.08 ｜星期日</span></p>
+      <p><span class="u">12:30 開席</span></p>
+      <p><a class="u" id="venueLink" href="#" target="_blank" rel="noopener">喜宴地點：上海鄉村-承德本家</a></p>
+      <p><a class="u" id="addrLink" href="#" target="_blank" rel="noopener">臺北市大同區黎明里承德路一段2號7樓</a></p>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <figure class="ph"><img src="assets/photos/sunn0502-1.jpg" width="933" height="1400" alt="" loading="lazy"></figure>
+
+  <!-- 8 · love you forever -->
+  <section class="blk forever">
+    <p class="t-serif wine" data-rise>Because of you, my life is filled with happiness.</p>
+    <div class="forever-row">
+      <img class="arch arch--left" src="assets/photos/sunn0615.jpg" alt="" loading="lazy" data-rise>
+      <div class="forever-side" data-rise>
+        <p class="t-thin wine">Love<br>you<br>Forever</p>
+        <span class="vline" aria-hidden="true"></span>
+      </div>
+    </div>
+    <p class="t-script wine" data-rise>Our Love</p>
+  </section>
+
+  <!-- 9 -->
+  <figure class="ph"><img src="assets/photos/sunn0500.jpg" width="1400" height="933" alt="" loading="lazy"></figure>
+
+  <!-- 10 · like sunlight -->
+  <section class="sunlight">
+    <figure class="ph ph--fade"><img src="assets/photos/sunn0647.jpg" width="1400" height="933" alt="" loading="lazy"></figure>
+    <div class="blk blk--tight">
+      <p class="t-quote" data-rise>Let my love, like sunlight,<br>surround you and yet give you illumined freedom.</p>
+      <p class="t-zh t-zh--sun" data-rise>我們穿過萬里之遙遇到彼此<br>世界在繁華喧囂的光暈里倒退<br>你於我而言，是這場盛大浪漫里的唯一心動</p>
+    </div>
+  </section>
+
+  <!-- 11 · love 11/08 you -->
+  <section class="blk loveyou">
+    <img class="arch arch--center" src="assets/photos/sunn0655.jpg" alt="" loading="lazy" data-rise>
+    <p class="loveyou-row" data-rise><span>LOVE</span><span>11/08</span><span>YOU</span></p>
+    <p class="t-quote wine" data-rise>Looking back at all the excitement in the past years,<br>you still won the top spot.</p>
+  </section>
+
+  <!-- 12 · the fan, running into the calendar -->
+  <figure class="ph ph--flush"><img src="assets/photos/sunn0475.jpg" width="933" height="1400" alt="" loading="lazy"></figure>
+
+  <!-- 13 · calendar -->
+  <section class="cal">
+    <div class="cal-quotes">
+      <p>You are everything<br>when you are with me,<br>and everything is you<br>when you are not.</p>
+      <p>You were never just my queen<br>you were the someone that<br>I wanted to spend the rest<br>of my life with.</p>
+    </div>
+    <p class="cal-md">11<span>/</span>08</p>
+    <div class="cal-grid" id="calGrid" aria-label="2026 年 11 月"></div>
+  </section>
+
+  <!-- 14 · save the date -->
+  <section class="blk save">
+    <canvas class="save-sparks" id="saveSparks" aria-hidden="true"></canvas>
+    <p class="t-display wine" data-rise>Save the date</p>
+    <p class="save-sub" data-rise>【 好久不見 / 婚禮見 】</p>
+    <div class="count" id="count" data-rise>
+      <div><b data-u="d">00</b><span>天</span></div>
+      <div><b data-u="h">00</b><span>時</span></div>
+      <div><b data-u="m">00</b><span>分</span></div>
+      <div><b data-u="s">00</b><span>秒</span></div>
+    </div>
+  </section>
+
+  <!-- 15 · getting there -->
+  <section class="blk traffic">
+    <h2 class="traffic-title" data-rise>交通資訊</h2>
+    <div class="traffic-body" data-rise>
+      <p class="tb-h">捷運／台鐵／高鐵</p>
+      <p><span class="u">📌台北車站 Taipei Main Station</span></p>
+      <p>從「台北車站」地下街或地面出口出來。</p>
+      <p class="pt">👉 往「承德路方向」前進（建議走 M1 出口／台北轉運站方向）</p>
+      <p class="pt">👉 出站後會看到「京站時尚廣場」和「台北轉運站」於正前方。</p>
+      <p class="pt">👉 沿著「承德路一段」往北走（途經京站、凱撒飯店後方）。</p>
+      <p class="pt">👉 步行約 5 分鐘，即可見「承德路一段 2 號」的建築。</p>
+      <p class="pt">👉 1 樓為商辦大樓入口，搭可乘電梯上 7 樓，抵達 7 樓後就是<br><b class="u">上海鄉村 承德本家。</b></p>
+
+      <p class="tb-h tb-h--gap">🚗停車資訊</p>
+      <p class="num"><span>①</span>Times 台北地下街停車場-中央入口 (臺北市大同區黎明里市民大道一段100號)</p>
+      <p class="num num--cont">👉走Y9安全門出口，上來後即可看到上海鄉村餐廳標誌，往左轉沿著路標往皇翔台北廣場前進，搭可乘電梯上7樓，即抵達上海鄉村-承德本家。</p>
+      <p class="num"><span>②</span>與「上海鄉村 承德本家」同棟停車場（每小時120 元）</p>
+    </div>
+    <a class="map" id="mapLink" href="#" target="_blank" rel="noopener" data-rise>
+      <img src="assets/map.png" width="376" height="374" alt="上海鄉村 承德本家 位置圖：台北車站北側，承德路一段 2 號" loading="lazy">
+    </a>
+  </section>
+
+  <!-- the rest of the shoot -->
+  <section class="blk moments">
+    <p class="t-display t-display--sm wine" data-rise>Our Moments</p>
+    <p class="moments-sub" data-rise>我們的時光</p>
+  </section>
+  <div class="gallery" id="gallery"></div>
+
+  <!-- 16 -->
+  <figure class="ph"><img src="assets/photos/sunn0422-1.jpg" width="933" height="1400" alt="" loading="lazy"></figure>
+
+  <!-- 17 · thank you -->
+  <section class="blk thanks">
+    <p class="t-quote" data-rise>Love triumphs over everything<br>Love has no age,<br>no limit and no death.</p>
+    <p class="t-display wine" data-rise>Thank you</p>
+  </section>
+
+</div>
+</main>
+
+<!-- background music (shown only when a track is set in js/config.js) -->
+<button class="music" id="music" type="button" aria-label="播放音樂" hidden>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.2"/><circle cx="12" cy="12" r="6.6"/><circle cx="12" cy="12" r="2.2"/><path d="M15.6 5.2c1.6.7 2.8 1.9 3.4 3.4"/></svg>
+</button>
+<audio id="bgm" loop preload="none"></audio>
+
+<!-- a simple scrubber on the right edge -->
+<div class="rail" id="rail" hidden>
+  <div class="rail-track" id="railTrack"><div class="rail-thumb" id="railThumb"></div></div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/scene.js"></script>
+<script src="js/invite.js"></script>
+</body>
+</html>

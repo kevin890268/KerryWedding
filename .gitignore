@@ -1,0 +1,11 @@
+.DS_Store
+Thumbs.db
+*.log
+
+# screen recordings: too heavy for the repository
+*.MP4
+*.mp4
+*.mov
+
+# the full-resolution originals (about 300 MB); the page uses the web copies in assets/photos
+pic/
