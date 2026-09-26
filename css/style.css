@@ -27,6 +27,7 @@
   --font-zh:"Chocolate Classical Sans","PingFang TC","Microsoft JhengHei",sans-serif;  /* all Chinese */
   --font-en:"Chocolate Classical Sans","Helvetica Neue",Arial,sans-serif;             /* readable English and numbers */
   --font-script:"Allura",cursive;                                                     /* large decorative English */
+  --font-brush:"Kaushan Script",cursive;                                              /* the two brush-script quotes */
 
   --ease-glide:cubic-bezier(.22,.61,.36,1);
   --ease-soft:cubic-bezier(.4,0,.2,1);
@@ -41,6 +42,11 @@
 @font-face{
   font-family:"Allura";
   src:url("../assets/fonts/allura.woff2") format("woff2");
+  font-weight:400; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:"Kaushan Script";
+  src:url("../assets/fonts/kaushan-script.woff2") format("woff2");
   font-weight:400; font-style:normal; font-display:swap;
 }
 

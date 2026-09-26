@@ -424,7 +424,7 @@ function ready() {
 function warmFonts() {
   if (!document.fonts || !document.fonts.load) return;
   const text = (el.invite.textContent || '').replace(/\s+/g, '') + '0123456789';
-  ['400 16px "Chocolate Classical Sans"', '400 16px Allura']
+  ['400 16px "Chocolate Classical Sans"', '400 16px Allura', '400 16px "Kaushan Script"']
     .forEach(f => document.fonts.load(f, text).catch(() => {}));
 }
 

@@ -29,6 +29,8 @@ FONTS = [
      "chocolate-classical-sans.woff2", "page"),
     ("Allura,Chocolate_Classical_Sans.zip", "Allura/Allura-Regular.ttf",
      "allura.woff2", "latin"),
+    ("Kaushan_Script.zip", "KaushanScript-Regular.ttf",
+     "kaushan-script.woff2", "latin"),
 ]
 
 LATIN = "".join(chr(c) for c in range(0x20, 0x7F)) + "’‘“”–—…·•©®"
