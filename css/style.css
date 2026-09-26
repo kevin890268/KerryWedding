@@ -251,23 +251,23 @@ body:not(.is-locked) .grain{display:none}
 }
 /* 我們結婚啦 — sans, medium, widely spaced */
 .cover-kicker{
-  top:calc(var(--u) * 5.3);
+  top:calc(var(--u) * 4.3);
   font-family:var(--font-zh); font-weight:500;
   font-size:calc(var(--u) * 3.05); letter-spacing:.35em; text-indent:.35em;
 }
 /* 囍 — sans, bold */
 .cover-xi{
-  top:calc(var(--u) * 13.2);
+  top:calc(var(--u) * 12);
   font-family:var(--font-zh); font-weight:900;
   font-size:calc(var(--u) * 10.5);
 }
 /* OUR WEDDING — a light, high-contrast roman with a crossed W */
 /* Our Wedding — in Thank you's script; padded so the gold reaches the swashes */
 .cover-title{
-  top:calc(var(--u) * 23.2);
+  top:calc(var(--u) * 21.6);
   padding:.12em 0 .22em;
   font-family:var(--font-script); font-weight:400;
-  font-size:calc(var(--u) * 13); line-height:1; letter-spacing:0;
+  font-size:calc(var(--u) * 12); line-height:1; letter-spacing:0;
 }
 /* 高凱俐 ◎ 黃泰傑 — serif, white, a little right of centre as in the original */
 .cover-names{
