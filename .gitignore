@@ -12,3 +12,6 @@ pic/
 
 # font downloads (the page loads the same fonts from Google Fonts)
 *.zip
+
+# the song as downloaded; the page uses the copy at assets/music.mp3
+*VEVO.mp3

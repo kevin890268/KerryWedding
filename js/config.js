@@ -14,7 +14,7 @@ window.WEDDING = {
   // background music: put the file at this path. If the file isn't there, the page stays silent.
   music: "assets/music.mp3",
   musicLead: 1000,     // start the music this many ms before the page begins to scroll
-  musicStart: 0,       // start this many seconds into the track (e.g. to skip a silent intro)
+  musicStart: 0.9,     // start this many seconds into the track: the file opens with 0.9 s of silence
 
   // auto-scroll speed once the invitation fills the screen, in CSS pixels per second.
   // 41 is what the reference recording does (62 px/s of 590-px video on a 393-pt phone).
