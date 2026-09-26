@@ -1,6 +1,6 @@
 /* ============================================================
    invite.js — Act II, the long invitation.
-   · builds the calendar, the gallery, the countdown and the map links
+   · builds the calendar, the countdown and the map links
    · gold confetti over the cover, sparkles by "Save the date"
    · once the card fills the screen, the page glides slowly to the
      bottom — until the reader scrolls or swipes for themselves
@@ -30,25 +30,6 @@ function buildCalendar() {
   }
   html += `<span class="year" aria-hidden="true">${year}</span>`;
   box.innerHTML = html;
-}
-
-function buildGallery() {
-  const box = $('#gallery');
-  const list = W.gallery || [];
-  const wide = new Set(W.galleryWide || []);
-  if (!box || !list.length) return;
-
-  // a portrait left on its own before a wide shot (or at the end) spans both columns
-  const kinds = list.map(f => (wide.has(f) ? 'wide' : 'tall'));
-  let run = [];
-  const close = () => { if (run.length % 2 === 1) kinds[run[run.length - 1]] = 'solo'; run = []; };
-  kinds.forEach((k, i) => { if (k === 'tall') run.push(i); else close(); });
-  close();
-
-  box.innerHTML = list.map((f, i) => {
-    const cls = kinds[i] === 'tall' ? '' : ` class="${kinds[i]}"`;
-    return `<img${cls} src="assets/photos/${f}" alt="" loading="lazy" decoding="async" data-rise>`;
-  }).join('');
 }
 
 function wireMap() {
@@ -258,17 +239,41 @@ function wireRail() {
    music (only if a track is configured)
    ------------------------------------------------------------------ */
 const audio = $('#bgm'), musicBtn = $('#music');
-let wantMusic = !!W.music;
+let musicOk = false;       // the file exists and can play
+let primed = false;        // unlocked by the guest's touch (phones only allow sound after one)
 
 function wireMusic() {
   if (!W.music || !audio || !musicBtn) return;
+  audio.preload = 'metadata';
+  audio.addEventListener('loadedmetadata', () => { musicOk = true; });
+  audio.addEventListener('error', () => { musicOk = false; musicBtn.hidden = true; });   // no file: stay silent
   audio.src = W.music;
-  musicBtn.hidden = false;
   musicBtn.addEventListener('click', () => {
     if (audio.paused) { audio.play().catch(() => {}); } else { audio.pause(); }
   });
-  audio.addEventListener('play',  () => musicBtn.classList.add('is-playing'));
+  audio.addEventListener('play',  () => { musicBtn.hidden = false; musicBtn.classList.add('is-playing'); });
   audio.addEventListener('pause', () => musicBtn.classList.remove('is-playing'));
+}
+
+/* Phones only let a page make sound after a touch. The guest's first touch on the
+   envelope plays the track silently for an instant, which unlocks it for later. */
+function primeMusic() {
+  if (primed || !W.music || !audio) return;
+  primed = true;
+  audio.preload = 'auto';
+  audio.muted = true;
+  const p = audio.play();
+  if (p && p.then) {
+    p.then(() => { audio.pause(); audio.currentTime = W.musicStart || 0; audio.muted = false; })
+     .catch(() => { audio.muted = false; });
+  } else { audio.muted = false; }
+}
+
+function playMusic() {
+  if (!W.music || !audio) return;
+  audio.muted = false;
+  try { audio.currentTime = W.musicStart || 0; } catch {}
+  audio.play().catch(() => { if (musicOk) musicBtn.hidden = false; });   // blocked: the button lets them start it
 }
 
 /* ------------------------------------------------------------------
@@ -292,8 +297,7 @@ function observeRises() {
    ------------------------------------------------------------------ */
 window.Invite = {
   gesture() {
-    // the first touch on the envelope counts as permission to play sound
-    if (wantMusic && audio && audio.paused) { wantMusic = false; audio.play().catch(() => {}); }
+    primeMusic();
   },
   start() {
     window.dispatchEvent(new Event('invite:live'));
@@ -321,12 +325,15 @@ window.Invite = {
     const fontsIn = document.fonts && document.fonts.ready
       ? Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 2500))])
       : Promise.resolve();
-    Promise.all([fontsIn, new Promise(r => setTimeout(r, 1400))]).then(startGlide);
+    const lead = W.musicLead ?? 1000;   // the music starts this long before the page begins to move
+    Promise.all([fontsIn, new Promise(r => setTimeout(r, Math.max(0, 1400 - lead)))]).then(() => {
+      playMusic();
+      setTimeout(startGlide, lead);
+    });
   }
 };
 
 buildCalendar();
-buildGallery();
 wireMap();
 startCountdown();
 wireMusic();

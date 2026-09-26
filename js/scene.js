@@ -424,11 +424,7 @@ function ready() {
 function warmFonts() {
   if (!document.fonts || !document.fonts.load) return;
   const text = (el.invite.textContent || '').replace(/\s+/g, '') + '0123456789';
-  ['400 16px "Noto Serif TC"', '500 16px "Noto Serif TC"', '700 16px "Noto Serif TC"',
-   '500 16px "Noto Sans TC"', '700 16px "Noto Sans TC"', '300 16px "Cormorant Garamond"',
-   '400 16px Cinzel', '700 16px Cinzel', '400 16px "Bodoni Moda"', '400 16px Italiana',
-   '400 16px Allison', '400 16px "Gilda Display"', '400 16px "Crimson Pro"',
-   '300 16px Jost', '400 16px Jost', '500 16px Jost']
+  ['400 16px "Chocolate Classical Sans"', '400 16px Allura']
     .forEach(f => document.fonts.load(f, text).catch(() => {}));
 }
 

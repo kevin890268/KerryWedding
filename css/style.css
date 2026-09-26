@@ -23,6 +23,11 @@
 
   --col:480px;                                 /* the invitation's column on wide screens */
 
+  /* the invitation's type — change a font here and it changes everywhere */
+  --font-zh:"Chocolate Classical Sans","PingFang TC","Microsoft JhengHei",sans-serif;  /* all Chinese */
+  --font-en:"Chocolate Classical Sans","Helvetica Neue",Arial,sans-serif;             /* readable English and numbers */
+  --font-script:"Allura",cursive;                                                     /* large decorative English */
+
   --ease-glide:cubic-bezier(.22,.61,.36,1);
   --ease-soft:cubic-bezier(.4,0,.2,1);
 }
@@ -36,7 +41,7 @@ body{
   min-height:100svh;
   background:radial-gradient(120% 90% at 50% 8%, #fdfaf3 0%, var(--ivory) 52%, var(--ivory-2) 100%);
   color:var(--ink);
-  font-family:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  font-family:var(--font-zh);
   overflow-x:hidden;
 }
 body.is-locked{overflow:hidden;height:100vh;height:100svh;touch-action:none;overscroll-behavior:none}
@@ -177,7 +182,7 @@ body:not(.is-locked) .grain{display:none}
   top:calc(100% + var(--env-w) * .4);
   white-space:nowrap;
   margin:0; text-align:center;
-  font-family:"Noto Serif TC",serif; font-weight:400;
+  font-family:var(--font-zh); font-weight:400;
   font-size:.78rem; letter-spacing:.32em;
   color:#9c8a74; opacity:0;
   transition:opacity .9s var(--ease-soft);
@@ -235,24 +240,24 @@ body:not(.is-locked) .grain{display:none}
 /* 我們結婚啦 — sans, medium, widely spaced */
 .cover-kicker{
   top:calc(var(--u) * 5.3);
-  font-family:"Noto Sans TC",sans-serif; font-weight:500;
+  font-family:var(--font-zh); font-weight:500;
   font-size:calc(var(--u) * 3.05); letter-spacing:.35em; text-indent:.35em;
 }
 /* 囍 — sans, bold */
 .cover-xi{
   top:calc(var(--u) * 13.2);
-  font-family:"Noto Sans TC",sans-serif; font-weight:900;
+  font-family:var(--font-zh); font-weight:900;
   font-size:calc(var(--u) * 10.5);
 }
 /* OUR WEDDING — a light, high-contrast roman with a crossed W */
 .cover-title{
   top:calc(var(--u) * 26.1);
-  font-family:"Cormorant Garamond",serif; font-weight:300;
+  font-family:var(--font-en); font-weight:300;
   font-size:calc(var(--u) * 9.3); letter-spacing:0;
 }
 .cover-sub{
   top:calc(var(--u) * 35.5);
-  font-family:"Jost",system-ui,sans-serif; font-weight:400;
+  font-family:var(--font-en); font-weight:400;
   font-size:calc(var(--u) * 1.55); line-height:1.62; letter-spacing:.22em; text-indent:.22em;
   color:#f3e2bb;
 }
@@ -261,7 +266,7 @@ body:not(.is-locked) .grain{display:none}
   top:calc(var(--u) * 121.5);
   display:flex; justify-content:center; align-items:center; gap:calc(var(--u) * 5.4);
   padding-left:calc(var(--u) * 4.6);
-  font-family:"Noto Serif TC",serif; font-weight:400;
+  font-family:var(--font-zh); font-weight:400;
   font-size:calc(var(--u) * 3.56); letter-spacing:.11em; color:#fff;
   text-shadow:0 0 calc(var(--u) * 1.2) rgba(0,0,0,.35);
 }

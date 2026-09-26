@@ -11,25 +11,10 @@ window.WEDDING = {
   // opened by the venue, the address and the map
   mapQuery: "上海鄉村 承德本家 臺北市大同區承德路一段2號7樓",
 
-  // optional background music, e.g. "assets/music.mp3" — the record button appears only when set
-  music: "",
-
-  // the rest of the shoot, shown under "Our Moments" (landscape shots span the full width)
-  gallery: [
-    "sunn0517.jpg",
-    "sunn0529-1.jpg", "sunn0557-1.jpg",
-    "sunn0563-1.jpg",
-    "sunn0570-1.jpg", "sunn0582.jpg",
-    "sunn0601-1.jpg",
-    "sunn0608-1.jpg", "sunn0610-1.jpg",
-    "sunn0621.jpg", "sunn0638.jpg",
-    "sunn0628-1.jpg",
-    "sunn0661-2.jpg", "sunn0676-1.jpg",
-    "sunn0705-2.jpg", "sunn0713-1.jpg",
-    "sunn0719.jpg", "sunn0736.jpg",
-    "sunn0740.jpg"
-  ],
-  galleryWide: ["sunn0517.jpg", "sunn0563-1.jpg", "sunn0601-1.jpg", "sunn0628-1.jpg"],
+  // background music: put the file at this path. If the file isn't there, the page stays silent.
+  music: "assets/music.mp3",
+  musicLead: 1000,     // start the music this many ms before the page begins to scroll
+  musicStart: 0,       // start this many seconds into the track (e.g. to skip a silent intro)
 
   // auto-scroll speed once the invitation fills the screen, in CSS pixels per second.
   // 41 is what the reference recording does (62 px/s of 590-px video on a 393-pt phone).
