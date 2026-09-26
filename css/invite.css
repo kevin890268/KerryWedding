@@ -120,8 +120,8 @@
   font-size:26px; letter-spacing:.01em; color:#9b1022; line-height:1.2;
 }
 .couple .who{font-size:23px;letter-spacing:.14em;color:#1f1f1f;margin-top:.35rem !important;font-weight:500}
-.couple .kin-l{font-size:14.5px;letter-spacing:.14em;color:#a3202e;margin-top:1.5rem !important}
-.couple .kin{font-size:13px;letter-spacing:.06em;color:#444;margin-top:.55rem !important}
+.couple .kin-l{font-size:16px;letter-spacing:.12em;color:#a3202e;margin-top:1.5rem !important}
+.couple .kin{font-size:16.5px;letter-spacing:.05em;color:#1c1c1c;margin-top:.5rem !important}   /* 雙方家長名字：字級在這裡調 */
 .heart{width:17px;height:16px;fill:#b3142b;margin-top:.55rem}
 .banquet-lead{font-size:18px;letter-spacing:.1em;color:#1c1c1c;font-weight:500;margin-top:2.1rem !important}   /* 喜宴段落：字級在這裡調 */
 .banquet{margin-top:.8rem}
