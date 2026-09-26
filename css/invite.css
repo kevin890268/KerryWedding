@@ -114,9 +114,9 @@
 .couple .kin-l{font-size:14.5px;letter-spacing:.14em;color:#a3202e;margin-top:1.5rem !important}
 .couple .kin{font-size:13px;letter-spacing:.06em;color:#444;margin-top:.55rem !important}
 .heart{width:17px;height:16px;fill:#b3142b;margin-top:.55rem}
-.banquet-lead{font-size:15.5px;letter-spacing:.1em;color:#222;font-weight:500;margin-top:2.1rem !important}
+.banquet-lead{font-size:18px;letter-spacing:.1em;color:#1c1c1c;font-weight:500;margin-top:2.1rem !important}   /* 喜宴段落：字級在這裡調 */
 .banquet{margin-top:.8rem}
-.banquet p{font-size:13.5px;letter-spacing:.07em;line-height:2.55;color:#333}
+.banquet p{font-size:16.5px;letter-spacing:.05em;line-height:2.2;color:#1c1c1c}
 .u{text-decoration:underline;text-underline-offset:.28em;text-decoration-thickness:1px;color:inherit}
 a.u:hover{color:var(--wine)}
 
