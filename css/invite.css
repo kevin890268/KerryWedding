@@ -204,15 +204,15 @@ a.u:hover{color:var(--wine)}
 .traffic-title{
   margin:0; font-size:26px; font-weight:500; letter-spacing:.08em; color:#9b1022;
 }
-.traffic-body{text-align:left;padding:2.2rem 1rem 0;font-size:14px;line-height:1.95;letter-spacing:.03em;color:#262626}
-.traffic-body .tb-h{font-size:17px;letter-spacing:.06em;margin-bottom:.1rem !important}
+.traffic-body{text-align:left;padding:2.2rem 1.1rem 0;font-size:16.5px;line-height:1.9;letter-spacing:.02em;color:#1c1c1c}   /* 交通資訊：字級在這裡調 */
+.traffic-body .tb-h{font-size:19px;font-weight:500;letter-spacing:.06em;margin-bottom:.1rem !important}
 .traffic-body .tb-h--gap{margin-top:1.3rem !important}
 .traffic-body .pt{padding-left:1.8em;text-indent:-1.8em}
 .traffic-body .pt b{font-weight:700;margin-left:1.8em;display:inline-block;text-indent:0}
 .traffic-body .num{padding-left:1.6em;text-indent:-1.6em}
 .traffic-body .num span{display:inline-block;width:1.6em;text-indent:0}
 .traffic-body .num--cont{padding-left:1.6em;text-indent:0}
-.map{display:block;width:66%;margin:2.6rem auto 0}
+.map{display:block;width:88%;margin:2.6rem auto 0}
 .map img{width:100%;height:auto}
 
 /* our moments */
