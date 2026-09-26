@@ -7,7 +7,7 @@
 | `env-flap.webp` | the closed flap, hinged along the top edge — the piece that swings open | `信件關.png` |
 | `wax-seal.webp` | the bear wax seal, 440 px wide (WebP, like all the artwork here: about 150 KB in total) | `蜂蠟.png` |
 | `opener.webp` | the letter opener, lifted off its checkerboard | `蜂蠟刀.png` |
-| `map.webp` | the venue map, cropped from the reference screen recording | the recording |
+| `map.jpg` | the venue map, 1100 px | `S__207273998.jpg` |
 | `photos/` | web copies of every photo in `pic/`, long edge 1400 px | `pic/` |
 
 The three envelope layers share one canvas of 1400 × 814 and stack pixel for pixel:
@@ -18,7 +18,3 @@ The source images came with a checkerboard painted into them rather than real
 transparency, so the layers were cut out by flood-filling the grey from the edges.
 If you replace a source image, the layers need re-cutting — ask, and the script can
 be rebuilt.
-
-`map.webp` is only 376 px wide because it comes from a 590 px screen recording. A
-sharper original from the venue can simply replace it (keep it square-ish, and
-update the `width`/`height` on its `<img>` in `index.html`).
