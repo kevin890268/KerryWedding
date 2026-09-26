@@ -270,7 +270,10 @@ body:not(.is-locked) .grain{display:none}
 /* OUR WEDDING — a light, high-contrast roman with a crossed W */
 /* Our Wedding — in Thank you's script; padded so the gold reaches the swashes */
 .cover-title{
-  top:calc(var(--u) * 21.6);
+  /* centred between 囍 (ink ends at 22.3u) and the groom's hair. The hair is at 38.1u
+     when the photo sits in its 1:1.96 frame; on taller screens the photo grows, so
+     the hair drops to 9.72% of the card's height — and the title follows it. */
+  top:calc(var(--u) * 3.37 + max(var(--u) * 19.05, 9.72%));
   padding:.12em 0 .22em;
   font-family:var(--font-script); font-weight:400;
   font-size:calc(var(--u) * 12); line-height:1; letter-spacing:0;

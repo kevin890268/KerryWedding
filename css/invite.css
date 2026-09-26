@@ -87,7 +87,11 @@
 /* Let my love, like sunlight… / Love triumphs over everything… — in Kaushan Script */
 .t-quote--brush{
   font-family:var(--font-brush); font-size:min(17px, 4.3vw);
-  line-height:1.65; letter-spacing:.01em; color:#4a4a4a;
+  line-height:1.65; letter-spacing:.02em; color:#4a4a4a;
+  /* Kaushan Script comes in one heavy weight: a hairline of the page's white
+     around each letter trims its strokes, so it reads finer */
+  -webkit-text-stroke:.55px #fff;
+  paint-order:normal;
 }
 
 /* 2 · we're getting married */
@@ -126,7 +130,7 @@
 a.u:hover{color:var(--wine)}
 
 /* 8 · love you forever */
-.forever{padding:3.1rem 0 1.6rem;text-align:left}
+.forever{padding:3.1rem 0 7px;text-align:left}
 .forever .t-serif{text-align:center;padding:0 1rem;margin-bottom:2.2rem}
 .forever-row{display:flex;align-items:flex-start}
 .arch{display:block;object-fit:cover;border-radius:999px 999px 0 0}
@@ -134,7 +138,7 @@ a.u:hover{color:var(--wine)}
 .forever-side{flex:1;display:flex;flex-direction:column;align-items:flex-end;padding:1.9rem 1.5rem 0 0}
 .forever-side .t-thin{text-align:right}
 .vline{display:block;width:1px;height:8.5rem;background:#333;margin:3.2rem 1.2rem 0 0}
-.forever .t-script{padding:1.5rem 0 0 1.2rem;transform-origin:left center}
+.forever .t-script{padding:43px 0 0 1.2rem;transform-origin:left center}   /* equal white above and below "Our Love" */
 
 /* 10 · like sunlight */
 .sunlight .t-quote{margin-bottom:1.7rem}
