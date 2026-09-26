@@ -75,17 +75,19 @@
 - 影片最後的婚貝 App 粉紅推廣頁沒有做（那是 App 的品牌頁，不是喜帖內容）。
 - 倒數單位用繁體「時」（影片為簡體「时」）。
 
-### 字體（Google Fonts，挑最接近影片的）
+### 字體（使用者提供的兩套字體，放在網站自己的檔案裡）
 | 用途 | 字體 |
 | --- | --- |
-| 所有中文 | Noto Serif TC |
-| OUR WEDDING、BORN FREE…、LOVE 11/08 YOU | Cinzel |
-| My lover、GROOM／BRIDE、Save the date、Thank you | Bodoni Moda |
-| Love you Forever | Italiana |
-| Our Love（手寫） | Allison |
-| 小段英文引言 | Gilda Display |
-| We're getting married 等英文句子 | Crimson Pro |
-| 日期、月曆、倒數數字 | Jost |
+| 所有中文 | Chocolate Classical Sans |
+| 大型裝飾英文：My lover、Save the date、Thank you、Love you Forever、Our Love | Allura |
+| 其他英文（全大寫、句子、小字）與所有數字 | Chocolate Classical Sans |
+
+- 字體檔：`assets/fonts/chocolate-classical-sans.woff2`、`assets/fonts/allura.woff2`，由專案根目錄的兩個 zip 產生。
+- 中文字體原檔 11.6 MB，只保留喜帖用到的字（約 380 字＋英數標點），壓成 64 KB。
+- **改了中文字之後要重跑一次**：`py tools/subset-fonts.py`（需要 `py -m pip install --user fonttools brotli`）。
+  沒重跑的話，新出現的字會用手機內建字體顯示。
+- 字體只設定一次：`css/style.css` 的 `--font-zh`、`--font-en`、`--font-script`。
+- 兩套字體都只有一種粗細；設成粗體時瀏覽器會「假加粗」，看起來像另一種字，所以強調改用顏色與底線。
 
 ## 4. 檔案結構
 
