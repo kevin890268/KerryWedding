@@ -57,9 +57,10 @@
 .blk{position:relative;padding:3.4rem 1.2rem;text-align:center}
 .blk--tight{padding-top:.4rem}
 
+/* We're getting married / Love has no definition… / Because of you… — in Thank you's script */
 .t-serif{
-  font-family:var(--font-en); font-weight:400;
-  font-size:15.5px; letter-spacing:.045em; line-height:1.5;
+  font-family:var(--font-script); font-weight:400;
+  font-size:30px; letter-spacing:0; line-height:1.25; text-wrap:balance;
 }
 .t-zh{
   font-size:14px; line-height:2; letter-spacing:.12em; color:var(--text);
