@@ -147,7 +147,7 @@ a.u:hover{color:var(--wine)}
   font-family:var(--font-en); font-weight:700; font-size:21px; letter-spacing:.03em; color:#9b1022;
   margin-top:-.3rem !important;
 }
-.loveyou .t-quote{margin-top:2.1rem !important}
+.loveyou .t-quote{margin-top:1.8rem !important;padding:0 .6rem;font-family:var(--font-script);font-size:min(22px, 5.4vw);line-height:1.35;letter-spacing:0}   /* Looking back… in Thank you's script */
 
 /* 12 · the fan, straight into the calendar */
 .ph--flush{margin-bottom:-1px}

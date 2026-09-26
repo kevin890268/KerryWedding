@@ -262,13 +262,15 @@ body:not(.is-locked) .grain{display:none}
   font-size:calc(var(--u) * 10.5);
 }
 /* OUR WEDDING — a light, high-contrast roman with a crossed W */
+/* Our Wedding — in Thank you's script; padded so the gold reaches the swashes */
 .cover-title{
-  top:calc(var(--u) * 26.1);
-  font-family:var(--font-en); font-weight:300;
-  font-size:calc(var(--u) * 9.3); letter-spacing:0;
+  top:calc(var(--u) * 23.2);
+  padding:.12em 0 .22em;
+  font-family:var(--font-script); font-weight:400;
+  font-size:calc(var(--u) * 13); line-height:1; letter-spacing:0;
 }
 .cover-sub{
-  top:calc(var(--u) * 35.5);
+  top:calc(var(--u) * 39.3);
   font-family:var(--font-en); font-weight:400;
   font-size:calc(var(--u) * 1.55); line-height:1.62; letter-spacing:.22em; text-indent:.22em;
   color:#f3e2bb;
