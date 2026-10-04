@@ -12,5 +12,5 @@
 /* the red arrow and its note beside the map */
 .map-wrap{width:88%;margin:2.6rem auto 0;position:relative}
 .map-wrap .map{width:100%;margin:0}
-.map-hint{display:flex;align-items:flex-end;justify-content:flex-end;gap:.5rem;margin:0 0 .3rem;padding-right:.4rem;color:#9b1022;font-size:15px;letter-spacing:.08em;line-height:1.4}
-.map-hint img{width:34px;height:auto;flex:none;margin-bottom:-.6rem}
+.map-hint{display:flex;align-items:flex-end;justify-content:flex-end;gap:.5rem;margin:0 0 .6rem;padding-right:.4rem;color:#9b1022;font-size:15px;letter-spacing:.08em;line-height:1.4}
+.map-hint img{width:34px;height:auto;flex:none}
